@@ -1,5 +1,12 @@
 {
-  "rewrites": [
-    { "source": "/order-of-events", "destination": "/order-of-events.html" }
+  "routes": [
+    {
+      "src": "/order-of-events.html",
+      "dest": "/order-of-events.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
   ]
 }
