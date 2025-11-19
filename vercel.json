@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/order-of-events", "destination": "/order-of-events.html" }
+  ]
+}
