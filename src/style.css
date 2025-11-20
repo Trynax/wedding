@@ -1,10 +1,23 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playwrite+NZ+Guides&display=swap');
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
 
 @theme {
   --font-family-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-family-playwrite: 'Playwrite NZ Guides', cursive;
   
   --color-maroon: #520100;
   --color-rose-light: #EEE6E6;
   --color-rose-medium: #E8D5D5;
+}
+
+.bg-wedding {
+  background-image: url('/img/bgpic.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }

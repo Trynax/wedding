@@ -8,27 +8,46 @@
 </head>
 <body class="bg-rose-light font-sans">
 
-  <div class="max-w-md mx-auto bg-rose-light min-h-screen">
+  <div class="max-w-md mx-auto bg-rose-light min-h-screen px-4">
 
-    <header class="bg-maroon rounded-full mx-6 mt-6 px-6 py-1 flex items-center justify-between">
+    <header class="fixed top-4 left-0 right-0 bg-maroon rounded-full mx-6 px-6 py-1 flex items-center justify-between z-50 max-w-sm" style="margin-left: auto; margin-right: auto;">
       <img src="img/solar_heart-bold-duotone.svg" alt="">
 
       <div class="flex items-center gap-3">
       <button class="bg-white text-maroon px-8 py-1 rounded-full font-semibold">
         RSVP
       </button>
-      <button class="text-white">
+      <button id="menuToggle" class="text-white">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </button>
       </div>
     </header>
+    <div id="menuOverlay" class="fixed inset-0 bg-maroon z-50 hidden max-w-md mx-auto">
+        <div class="max-w-md mx-auto h-full flex flex-col justify-center px-12 relative">
+          <button id="menuClose" class="absolute top-8 right-8 text-white">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+
+          <img src="img/solar_heart-bold-duotone.svg" alt="Heart" class="w-12 h-12 mb-12">
+
+          <nav class="space-y-8 text-white text-xl">
+            <a href="#" class="block hover:opacity-80">Location</a>
+            <a href="#" class="block hover:opacity-80">Gift Couple</a>
+            <a href="#" class="block hover:opacity-80">Color of the Day</a>
+            <a href="/order-of-events.html" class="block hover:opacity-80">Order of Event</a>
+            <a href="#" class="block hover:opacity-80">R.S.V.P</a>
+          </nav>
+        </div>
+      </div>
 
 
-    <h1 class="text-maroon text-4xl text-center mt-12 mb-8">Order of Event</h1>
+    <h1 class="text-maroon text-4xl text-center mt-24 mb-8">Order of Event</h1>
 
-    <section class="mx-6 mb-4  rounded-lg overflow-hidden">
+    <section class="mb-4  rounded-lg overflow-hidden">
       <div class="bg-rose-medium p-6 text-center border-b-2">
         <div class="flex justify-between items-center mb-2">
           <img src="img/face-left.svg" alt="">
@@ -45,7 +64,7 @@
       </div>
     </section>
 
-    <section class="mx-6 mb-4  rounded-lg overflow-hidden">
+    <section class="mb-4  rounded-lg overflow-hidden">
       <div class="bg-rose-medium p-6 text-center border-b-2">
         <div class="flex justify-between items-center mb-2">
           <img src="img/face-left.svg" alt="">
@@ -99,7 +118,7 @@
     </section>
 
 
-    <section class="mx-6 mb-4  rounded-lg overflow-hidden">
+    <section class="mb-4  rounded-lg overflow-hidden">
       <div class="bg-rose-medium p-6 text-center border-b-2">
         <div class="flex justify-between items-center mb-2">
           <img src="img/face-left.svg" alt="">
@@ -152,12 +171,10 @@
       </div>
     </section>
 
-    <footer class="bg-maroon text-white text-center py-6 mt-8">
+  </div>
+   <footer class="bg-maroon text-white text-center py-6 mt-8 max-w-md mx-auto">
       <p class="font-semibold">With Almighty Allah all things is possible</p>
     </footer>
-
-  </div>
-  
   <script type="module" src="/src/index.js"></script>
 </body>
 </html>
