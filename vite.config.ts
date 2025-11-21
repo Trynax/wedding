@@ -11,6 +11,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         'order-of-events': resolve(__dirname, 'order-of-events.html'),
+        'rsvp': resolve(__dirname, 'rsvp.html'),
       },
     },
   },

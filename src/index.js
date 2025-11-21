@@ -1,4 +1,3 @@
-// Menu toggle functionality
 document.addEventListener('DOMContentLoaded', () => {
   const menuToggle = document.getElementById('menuToggle');
   const menuClose = document.getElementById('menuClose');
@@ -13,11 +12,20 @@ document.addEventListener('DOMContentLoaded', () => {
       menuOverlay.classList.add('hidden');
     });
 
-
     menuOverlay.addEventListener('click', (e) => {
       if (e.target === menuOverlay) {
         menuOverlay.classList.add('hidden');
       }
+    });
+
+  const navLinks = menuOverlay.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+      
+        setTimeout(() => {
+          menuOverlay.classList.add('hidden');
+        }, 100);
+      });
     });
   }
 
@@ -96,6 +104,56 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+
+  const ticketForm = document.getElementById('ticketForm');
+  const formSection = document.getElementById('formSection');
+  const successSection = document.getElementById('successSection');
+  const groomGuestBtn = document.getElementById('groomGuestBtn');
+  const brideGuestBtn = document.getElementById('brideGuestBtn');
+  const guestTypeInput = document.getElementById('guestType');
+
+  if (groomGuestBtn && brideGuestBtn && guestTypeInput) {
+    groomGuestBtn.addEventListener('click', () => {
+      groomGuestBtn.classList.remove('bg-[#E5D9D9]', 'text-gray-500');
+      groomGuestBtn.classList.add('border-2', 'border-maroon', 'bg-[#C9B0B0]', 'text-gray-700');
+      brideGuestBtn.classList.remove('border-2', 'border-maroon', 'bg-[#C9B0B0]', 'text-gray-700');
+      brideGuestBtn.classList.add('bg-[#E5D9D9]', 'text-gray-500');
+      guestTypeInput.value = 'groom';
+    });
+
+    brideGuestBtn.addEventListener('click', () => {
+      brideGuestBtn.classList.remove('bg-[#E5D9D9]', 'text-gray-500');
+      brideGuestBtn.classList.add('border-2', 'border-maroon', 'bg-[#C9B0B0]', 'text-gray-700');
+      groomGuestBtn.classList.remove('border-2', 'border-maroon', 'bg-[#C9B0B0]', 'text-gray-700');
+      groomGuestBtn.classList.add('bg-[#E5D9D9]', 'text-gray-500');
+      guestTypeInput.value = 'bride';
+    });
+  }
+
+  if (ticketForm && formSection && successSection) {
+    ticketForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const formData = {
+        surname: document.getElementById('surname').value,
+        firstname: document.getElementById('firstname').value,
+        phone: document.getElementById('phone').value,
+        email: document.getElementById('email').value,
+        guestType: guestTypeInput.value,
+        message: document.getElementById('message').value
+      };
+
+      console.log('Ticket Submission:', formData);
+      
+
+      formSection.classList.add('hidden');
+      successSection.classList.remove('hidden');
+      
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 
 
   const weddingDate = new Date('February 7, 2026 00:00:00').getTime();

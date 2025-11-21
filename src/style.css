@@ -4,6 +4,7 @@
 html, body {
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
 }
 
 @theme {
@@ -20,4 +21,48 @@ html, body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(0vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: #FFA500;
+  top: -10%;
+  animation: confetti-fall 3s linear infinite;
+}
+
+.confetti-piece:nth-child(2n) {
+  background: #FF69B4;
+  width: 14px;
+  height: 18px;
+}
+
+.confetti-piece:nth-child(3n) {
+  background: #98D8C8;
+  width: 18px;
+  height: 14px;
+}
+
+.confetti-piece:nth-child(4n) {
+  background: #F7DC6F;
+  width: 12px;
+  height: 20px;
+}
+
+.confetti-piece:nth-child(5n) {
+  background: #BB8FCE;
+  width: 20px;
+  height: 12px;
 }
