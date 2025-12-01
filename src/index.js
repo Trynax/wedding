@@ -1,4 +1,42 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+  const currentPath = window.location.pathname;
+  const currentHash = window.location.hash;
+  const navLinks = document.querySelectorAll('footer .nav-link');
+  
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    link.classList.remove('active');
+    link.classList.add('text-white/60');
+    link.classList.remove('text-white');
+    
+    if (href === '/' && currentPath === '/index.html' || href === '/' && currentPath === '/') {
+      link.classList.add('active', 'text-white');
+      link.classList.remove('text-white/60');
+    } else if (href.includes('#') && currentHash && href.includes(currentHash)) {
+      link.classList.add('active', 'text-white');
+      link.classList.remove('text-white/60');
+    } else if (href.includes(currentPath) && currentPath !== '/' && currentPath !== '/index.html') {
+      link.classList.add('active', 'text-white');
+      link.classList.remove('text-white/60');
+    }
+  });
+
+  
+  window.addEventListener('hashchange', () => {
+    const hash = window.location.hash;
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      link.classList.remove('active', 'text-white');
+      link.classList.add('text-white/60');
+      
+      if (href.includes('#') && hash && href.includes(hash)) {
+        link.classList.add('active', 'text-white');
+        link.classList.remove('text-white/60');
+      }
+    });
+  });
+
   const menuToggle = document.getElementById('menuToggle');
   const menuClose = document.getElementById('menuClose');
   const menuOverlay = document.getElementById('menuOverlay');
