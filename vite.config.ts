@@ -10,8 +10,11 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
+        venue: resolve(__dirname, 'venue.html'),
+        gift: resolve(__dirname, 'gift.html'),
+        'invitation-code': resolve(__dirname, 'invitation-code.html'),
         'order-of-events': resolve(__dirname, 'order-of-events.html'),
-        'rsvp': resolve(__dirname, 'rsvp.html'),
+        rsvp: resolve(__dirname, 'rsvp.html'),
       },
     },
   },
