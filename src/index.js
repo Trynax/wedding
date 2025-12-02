@@ -222,4 +222,114 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCountdown();
     setInterval(updateCountdown, 1000);
   }
+
+
+  const cashBtn = document.getElementById('cashBtn');
+  const wishlistBtn = document.getElementById('wishlistBtn');
+  const giftMain = document.getElementById('giftMain');
+  const wishlistPage = document.getElementById('wishlistPage');
+  const cashModal = document.getElementById('cashModal');
+  const cashModalContent = document.getElementById('cashModalContent');
+  const closeModal = document.getElementById('closeModal');
+  const backBtn = document.getElementById('backBtn');
+
+
+  async function loadWishlist() {
+    const wishlistContainer = document.getElementById('wishlistContainer');
+    if (!wishlistContainer) return;
+
+    try {
+      const { wishlistItems, formatPrice } = await import('./wishlist.js');
+      
+      wishlistContainer.innerHTML = '';
+      
+      wishlistItems.forEach(item => {
+        const itemCard = document.createElement('div');
+        itemCard.className = 'bg-[#E5D9D9] rounded-2xl p-6';
+        itemCard.innerHTML = `
+          <h3 class="text-gray-800 text-lg font-normal mb-1">${item.name}</h3>
+          <p class="text-gray-800 text-2xl font-bold mb-4">${formatPrice(item.price)}</p>
+          <div class="flex gap-3">
+            <button class="send-money-btn flex-1 bg-[#C9B0B0] text-maroon py-3 rounded-full font-medium hover:opacity-90 transition" data-item-id="${item.id}">
+              Send Money
+            </button>
+            <button class="buy-online-btn flex-1 bg-maroon text-white py-3 rounded-full font-medium hover:opacity-90 transition" data-item-id="${item.id}" data-url="${item.buyOnlineUrl}">
+              Buy online
+            </button>
+          </div>
+        `;
+        wishlistContainer.appendChild(itemCard);
+      });
+
+
+      document.querySelectorAll('.send-money-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const itemId = btn.getAttribute('data-item-id');
+
+          console.log('Send money for item:', itemId);
+        });
+      });
+
+      // Add event listeners for Buy online buttons
+      document.querySelectorAll('.buy-online-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const url = btn.getAttribute('data-url');
+          if (url && url !== '#') {
+            window.open(url, '_blank');
+          } else {
+            console.log('Buy online for item:', btn.getAttribute('data-item-id'));
+          }
+        });
+      });
+
+    } catch (error) {
+      console.error('Failed to load wishlist:', error);
+    }
+  }
+
+  if (cashBtn && cashModal && cashModalContent) {
+    cashBtn.addEventListener('click', () => {
+      cashModal.classList.remove('hidden');
+      cashModal.classList.add('flex');
+
+      setTimeout(() => {
+        cashModalContent.classList.remove('translate-y-full');
+        cashModalContent.classList.add('translate-y-0');
+      }, 10);
+    });
+  }
+
+  if (closeModal && cashModal && cashModalContent) {
+    const closeModalFunc = () => {
+      cashModalContent.classList.remove('translate-y-0');
+      cashModalContent.classList.add('translate-y-full');
+      setTimeout(() => {
+        cashModal.classList.add('hidden');
+        cashModal.classList.remove('flex');
+      }, 300);
+    };
+
+    closeModal.addEventListener('click', closeModalFunc);
+
+    cashModal.addEventListener('click', (e) => {
+      if (e.target === cashModal) {
+        closeModalFunc();
+      }
+    });
+  }
+
+  if (wishlistBtn && giftMain && wishlistPage) {
+    wishlistBtn.addEventListener('click', async () => {
+      giftMain.classList.add('hidden');
+      wishlistPage.classList.remove('hidden');
+      await loadWishlist();
+    });
+  }
+
+  if (backBtn && giftMain && wishlistPage) {
+    backBtn.addEventListener('click', () => {
+      wishlistPage.classList.add('hidden');
+      giftMain.classList.remove('hidden');
+    });
+  }
 });

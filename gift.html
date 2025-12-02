@@ -19,124 +19,93 @@
           <a href="/rsvp.html" class="bg-white text-maroon px-8 py-1 rounded-full font-semibold">
             R.S.V.P
           </a>
-          <!-- <button id="menuToggle" class="text-white">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-          </button> -->
         </div>
       </header>
 
-      <!-- <div id="menuOverlay" class="fixed inset-0 bg-maroon z-50 hidden max-w-md mx-auto">
-        <div class="max-w-md mx-auto h-full flex flex-col px-6 py-8 relative">
-          <div>
-            <img src="img/solar_heart-bold-duotone.svg" alt="Heart" class="w-12 h-12 mb-12">
+      <!-- Main Gift Page -->
+      <section id="giftMain" class="px-6 pt-24 pb-8">
+        <h2 class="text-gray-800 text-3xl font-bold text-center mb-8">Gift the Couple</h2>
 
-            <nav class="space-y-8 text-white text-xl">
-              <a href="/" class="block hover:opacity-80">Home</a>
-              <a href="/venue.html" class="block hover:opacity-80">Venue</a>
-              <a href="/gift.html" class="block hover:opacity-80">Gift Couple</a>
-              <a href="/#Color-of-the-Day" class="block hover:opacity-80">Color of the Day</a>
-              <a href="/order-of-events.html" class="block hover:opacity-80">Order of Event</a>
-              <a href="/rsvp.html" class="block hover:opacity-80">R.S.V.P</a>
-            </nav>
-          </div>
-          <button id="menuClose" class="absolute top-8 right-8 text-white">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
+        <div class="mb-8">
+          <img src="img/pana.svg" alt="Gift the Couple" class="w-full max-w-sm mx-auto">
+        </div>
+
+        <div class="flex justify-between gap-4">
+          <button id="cashBtn" class="bg-[#E5D9D9] rounded-2xl p-4 flex-1 hover:shadow-lg transition">
+            <div class="mb-4 rounded-lg overflow-hidden">
+              <img src="img/cash.svg" alt="Gift Cash" class="w-full">
+            </div>
+            <h3 class="text-gray-800 font-semibold text-sm text-center">Gift Cash</h3>
+          </button>
+
+          <button id="wishlistBtn" class="bg-[#E5D9D9] rounded-2xl py-2 px-2 flex flex-col items-center flex-1 hover:shadow-lg transition">
+            <div class="mb-4 rounded-lg overflow-hidden">
+              <img src="img/wishlist.svg" alt="Fulfill Couple's Wishlist" class="h-24 w-24">
+            </div>
+            <h3 class="text-gray-800 font-semibold text-sm text-center -mt-5">Fulfill Couple's Wishlist</h3>
           </button>
         </div>
-      </div> -->
+      </section>
 
-      <section class="mx-6 pt-24">
-        <h2 class="text-maroon text-3xl font-bold text-center mb-6 mt-6">Gift the Couple</h2>
+      <!-- Wishlist Page -->
+      <section id="wishlistPage" class="pt-20 pb-8 hidden">
+        <div class="bg-rose-light px-6 py-4 flex items-center relative">
+          <button id="backBtn" class="text-gray-700 absolute left-6">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+          </button>
+          <h2 class="text-gray-700 text-2xl font-medium text-center flex-1">Couple's Wishlist</h2>
+        </div>
 
-        <div class="bg-rose-medium p-2 rounded-lg">
-          <div class="bg-rose-medium rounded-xl overflow-hidden">
-            <div class="flex border-4 rounded-2xl border-white bg-white">
-              <button id="groomTab" class="flex-1 bg-[#AC9A59] text-white py-3 rounded-xl font-semibold transition-colors">Groom</button>
-              <button id="brideTab" class="flex-1 text-gray-500 py-3 rounded-xl font-semibold transition-colors">Bride</button>
-            </div>
-
-            <div id="groomContent" class="p-6 space-y-4">
-              <div>
-                <p class="text-maroon text-sm mb-1">Account name</p>
-                <div class="flex items-center justify-between bg-white p-3 rounded-lg">
-                  <p class="text-maroon font-semibold">Adewuyi Quadri Adetunji</p>
-                  <button class="copy-btn text-maroon" data-copy="Adewuyi Quadri Adetunji">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-
-              <div>
-                <p class="text-maroon text-sm mb-1">Account number</p>
-                <div class="flex items-center justify-between bg-white p-3 rounded-lg">
-                  <p class="text-maroon font-semibold">6947037490038</p>
-                  <button class="copy-btn text-maroon" data-copy="6947037490038">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-
-              <div>
-                <p class="text-maroon text-sm mb-1">Bank name</p>
-                <div class="flex items-center justify-between bg-white p-3 rounded-lg">
-                  <p class="text-maroon font-semibold">Wema Bank</p>
-                  <button class="copy-btn text-maroon" data-copy="Wema Bank">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div id="brideContent" class="p-6 space-y-4 hidden">
-              <div>
-                <p class="text-maroon text-sm mb-1">Account name</p>
-                <div class="flex items-center justify-between bg-white p-3 rounded-lg">
-                  <p class="text-maroon font-semibold">Bello Zuliat Ololade</p>
-                  <button class="copy-btn text-maroon" data-copy="Bello Zuliat Ololade">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-
-              <div>
-                <p class="text-maroon text-sm mb-1">Account number</p>
-                <div class="flex items-center justify-between bg-white p-3 rounded-lg">
-                  <p class="text-maroon font-semibold">1234567890</p>
-                  <button class="copy-btn text-maroon" data-copy="1234567890">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-
-              <div>
-                <p class="text-maroon text-sm mb-1">Bank name</p>
-                <div class="flex items-center justify-between bg-white p-3 rounded-lg">
-                  <p class="text-maroon font-semibold">GTBank</p>
-                  <button class="copy-btn text-maroon" data-copy="GTBank">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div id="wishlistContainer" class="px-6 mt-6 space-y-4">
+          <!-- Wishlist items will be dynamically generated here -->
         </div>
       </section>
+
+      <!-- Cash Gift Modal -->
+      <div id="cashModal" class="fixed left-0 right-0 top-0 bottom-16 bg-black/50 z-50 hidden items-end">
+        <div id="cashModalContent" class="bg-rose-light rounded-t-3xl w-full max-w-md mx-auto relative transform translate-y-full transition-transform duration-300">
+          <div class="relative w-full pt-6 pb-4 flex items-center px-4">
+                <h3 class="absolute left-1/2 -translate-x-1/2 text-center text-[#363636] text-2xl font-semibold">
+                    Cash Gift
+                </h3>
+
+                <button id="closeModal" class="ml-auto">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                    <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2" fill="none"/>
+                    <path d="M7 7l6 6M13 7l-6 6" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </button>
+            </div>
+          <div class="px-6 pb-6 space-y-4 max-h-[55vh] overflow-y-auto">
+            <div>
+              <label class="text-black text-base font-normal block mb-2">Full name</label>
+              <input type="text" placeholder="Enter your name" class="w-full px-4 py-3 rounded-md bg-[#E5D9D9] text-gray-800 placeholder-[#949494] focus:outline-none">
+            </div>
+
+            <div>
+              <label class="text-black text-base font-normal block mb-2">Email address</label>
+              <input type="email" placeholder="example@gmail.com" class="w-full px-4 py-3 rounded-md bg-[#E5D9D9] text-gray-800 placeholder-[#949494] focus:outline-none">
+            </div>
+
+            <div>
+              <label class="text-black text-base font-normal block mb-2">Phone number</label>
+              <input type="tel" placeholder="Enter your phone number" class="w-full px-4 py-3 rounded-md bg-[#E5D9D9] text-gray-800 placeholder-[#949494] focus:outline-none">
+            </div>
+
+            <div>
+              <label class="text-black text-base font-normal block mb-2">Amount</label>
+              <input type="number" placeholder="Enter the amount you want to gift" class="w-full px-4 py-3 rounded-md bg-[#E5D9D9] text-gray-800 placeholder-[#949494] focus:outline-none">
+            </div>
+
+            <button class="w-full bg-maroon text-white py-3.5 rounded-lg font-semibold flex items-center justify-center gap-2 mt-2 hover:opacity-90 transition">
+              <img src="img/paystack-icon.svg" alt="" class="w-5 h-5">
+              Pay via Paystack
+            </button>
+          </div>
+        </div>
+      </div>
     </main>
     
     <footer class="bg-maroon text-white py-4 max-w-md mx-auto fixed bottom-0 left-0 right-0 z-40">
