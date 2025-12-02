@@ -1,5 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  function generateInvitationCode(surname) {
+    const prefix = surname.substring(0, 6).toUpperCase().replace(/[^A-Z]/g, 'X');
+    const randomNum = Math.floor(1000 + Math.random() * 9000);
+    return `${prefix}-${randomNum}`;
+  }
+
   const currentPath = window.location.pathname;
   const currentHash = window.location.hash;
   const navLinks = document.querySelectorAll('footer .nav-link');
@@ -183,7 +189,21 @@ document.addEventListener('DOMContentLoaded', () => {
       };
 
       console.log('Ticket Submission:', formData);
-      
+
+      const invitationCode = generateInvitationCode(formData.surname);
+      const invitationCodeEl = document.getElementById('invitation-code');
+      if (invitationCodeEl) {
+        invitationCodeEl.textContent = invitationCode;
+        const copyBtn = invitationCodeEl.parentElement.parentElement.querySelector('.copy-btn');
+        if (copyBtn) {
+          copyBtn.setAttribute('data-copy', invitationCode);
+        }
+      }
+
+      const inviteeNameEl = document.getElementById('success-invitee-name');
+      if (inviteeNameEl) {
+        inviteeNameEl.textContent = formData.surname.toUpperCase();
+      }
 
       formSection.classList.add('hidden');
       successSection.classList.remove('hidden');
@@ -193,6 +213,126 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+
+  const downloadInviteBtn = document.getElementById('downloadInviteBtn');
+  if (downloadInviteBtn) {
+    downloadInviteBtn.addEventListener('click', async () => {
+      try {
+        const imgEl = document.getElementById('inviteAttachment');
+        if (!imgEl) {
+          alert('No attachment available to download');
+          return;
+        }
+
+        const src = imgEl.getAttribute('src');
+        const res = await fetch(src, { cache: 'no-cache' });
+        if (!res.ok) throw new Error('Failed to fetch image');
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        const nameMatch = src.split('/').pop() || 'invitation.png';
+        a.download = nameMatch;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+      } catch (err) {
+        console.error('Download failed', err);
+        alert('Download failed. If the image is hosted externally, please save it manually.');
+      }
+    });
+  }
+
+
+  const codeForm = document.getElementById('codeForm');
+  const codeFormSection = document.getElementById('codeFormSection');
+  const invitationSection = document.getElementById('invitationSection');
+  const invitationCodeInput = document.getElementById('invitationCode');
+  const displayedCode = document.getElementById('displayedCode');
+  const inviteeName = document.getElementById('inviteeName');
+  const pasteBtn = document.getElementById('pasteBtn');
+  const clearBtn = document.getElementById('clearBtn');
+  const invitationDownloadBtn = document.getElementById('downloadBtn');
+
+
+  if (pasteBtn) {
+    pasteBtn.addEventListener('click', async () => {
+      try {
+        const text = await navigator.clipboard.readText();
+        invitationCodeInput.value = text.trim();
+      } catch (err) {
+        console.error('Failed to read clipboard:', err);
+        alert('Unable to paste. Please enter the code manually.');
+      }
+    });
+  }
+
+  if (codeForm) {
+    codeForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const code = invitationCodeInput.value.trim().toUpperCase();
+      
+      if (!code) {
+        alert('Please enter an invitation code');
+        return;
+      }
+      console.log('Ticket ID:', code);
+      
+
+      // Todo, backend will return the actual name
+      const displayName = code;
+      
+      displayedCode.textContent = code;
+      inviteeName.textContent = displayName;
+
+      codeFormSection.classList.add('hidden');
+      invitationSection.classList.remove('hidden');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      invitationCodeInput.value = '';
+      invitationSection.classList.add('hidden');
+      codeFormSection.classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+
+  if (invitationDownloadBtn) {
+    invitationDownloadBtn.addEventListener('click', async () => {
+      try {
+        const imgEl = document.getElementById('invitationImage');
+        if (!imgEl) {
+          alert('No invitation available to download');
+          return;
+        }
+
+        const src = imgEl.getAttribute('src');
+        const res = await fetch(src, { cache: 'no-cache' });
+        if (!res.ok) throw new Error('Failed to fetch image');
+        
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = src.split('/').pop() || 'invitation.png';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+      } catch (err) {
+        console.error('Download failed', err);
+        alert('Download failed. Please try again.');
+      }
+    });
+  }
 
   const weddingDate = new Date('February 7, 2026 00:00:00').getTime();
 
@@ -270,7 +410,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       });
 
-      // Add event listeners for Buy online buttons
+ 
       document.querySelectorAll('.buy-online-btn').forEach(btn => {
         btn.addEventListener('click', () => {
           const url = btn.getAttribute('data-url');

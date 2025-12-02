@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitation Code - Walimatul Nikkah</title>
+  <link href="/src/style.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playwrite+CZ:wght@100..400&family=Poppins:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body class="bg-rose-light font-sans">
+
+  <div class="max-w-md mx-auto bg-rose-light min-h-screen py-6
+   pb-24">
+
+    <header class="fixed top-0 left-0 right-0 bg-maroon px-6 py-3 flex items-center justify-between z-50 max-w-md mx-auto w-full">
+      <img src="img/solar_heart-bold-duotone.svg" alt="Heart">
+
+      <div class="flex items-center gap-3">
+        <a href="/rsvp.html" class="bg-white text-maroon px-8 py-1 rounded-full font-semibold">
+          R.S.V.P
+        </a>
+      </div>
+    </header>
+
+    <!-- Form Section - Enter Code -->
+    <main id="codeFormSection" class="pt-20 pb-12 px-6">
+      <!-- Header with Back Button and Title -->
+      <div class="flex items-center mb-8">
+        <button onclick="history.back()" class="flex items-center gap-2 text-gray-700">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+        <h1 class="text-gray-800 text-xl font-semibold flex-1 text-center">Invitation Code</h1>
+        <div class="w-6"></div>
+      </div>
+
+      <form id="codeForm" class="space-y-6">
+        <div>
+          <label for="invitationCode" class="text-gray-700 text-sm font-medium block mb-2">Invitation Code</label>
+          <div class="flex  bg-[#E5D9D9] p-3 rounded-lg">
+            <input 
+              type="text" 
+              id="invitationCode" 
+              name="invitationCode"
+              placeholder="Enter Code"
+              required
+              class="flex-1 px-4 py-3 rounded-lg  outline-none placeholder-gray-400"
+            >
+            <button 
+              type="button"
+              id="pasteBtn"
+              class="px-4 py-3 rounded-lg text-maroon"
+            >
+              Paste Code
+            </button>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <p class="text-gray-600 text-center text-sm">Don't have an invitation code?</p>
+          <a 
+            href="/rsvp.html"
+            class="block w-full bg-rose-medium text-maroon py-3 rounded-full font-semibold hover:opacity-90 transition text-center"
+          >
+            Get your invitation code
+          </a>
+        </div>
+
+        <button 
+          type="submit"
+          class="w-full bg-maroon text-white py-4 rounded-full font-semibold hover:bg-maroon/90 transition"
+        >
+          Proceed
+        </button>
+      </form>
+    </main>
+
+    <!-- Invitation Display Section - Hidden by default -->
+    <main id="invitationSection" class="pt-20 pb-12 px-6 hidden">
+      <!-- Header with Back Button and Title -->
+      <div class="flex items-center mb-6">
+        <button onclick="window.location.href='/'" class="flex items-center gap-2 text-gray-700">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+        <h1 class="text-gray-800 text-xl font-semibold flex-1 text-center">Invitation Code</h1>
+        <div class="w-6"></div>
+      </div>
+
+      <!-- Code Display with Clear -->
+      <div class="mb-6 ">
+        <label class="text-gray-700 text-sm font-medium block mb-2">Invitation Code</label>
+        <div class="flex items-center justify-between bg-[#E5D9D9] px-4 py-4 rounded-lg">
+          <span id="displayedCode" class="text-gray-800 font-semibold">SHIKEO-2436</span>
+          <button 
+            id="clearBtn"
+            class="text-maroon hover:opacity-80 transition text-2xl"
+          >
+            Clear
+          </button>
+        </div>
+      </div>
+
+      <!-- Name Display -->
+      <div class="text-center mb-4">
+        <p class="text-gray-600 text-sm uppercase tracking-wider">
+          <span id="inviteeName" class="font-semibold text-maroon">ADEWUYI</span>, YOU'RE INVITED TO
+        </p>
+      </div>
+
+      <!-- Invitation Attachment -->
+      <div class="rounded-2xl  overflow-hidden mb-6">
+        <div class="p-4">
+          <img 
+            id="invitationImage" 
+            src="img/invitationcard.png" 
+            alt="Invitation" 
+            class="w-full h-auto rounded-lg"
+          >
+        </div>
+      </div>
+
+      <!-- Download Button -->
+      <button 
+        id="downloadBtn"
+        class="w-full bg-maroon text-white py-4 rounded-full font-semibold hover:bg-maroon/90 transition"
+      >
+        Download
+      </button>
+    </main>
+
+  </div>
+
+  <footer class="bg-maroon text-white py-4 max-w-md mx-auto fixed bottom-0 left-0 right-0 z-40">
+    <nav class="flex items-center justify-around px-4">
+      <a href="/" class="flex flex-col items-center gap-1 hover:opacity-80 text-white/60 nav-link">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
+        </svg>
+        <span class="text-xs">Home</span>
+      </a>
+      
+      <a href="/venue.html" class="flex flex-col items-center gap-1 hover:opacity-80 text-white/60 nav-link">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+        </svg>
+        <span class="text-xs">Venue</span>
+      </a>
+      
+      <a href="/gift.html" class="flex flex-col items-center gap-1 hover:opacity-80 text-white/60 nav-link">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M5 5a3 3 0 015-2.236A3 3 0 0114.83 6H16a2 2 0 110 4h-5V9a1 1 0 10-2 0v1H4a2 2 0 110-4h1.17C5.06 5.687 5 5.35 5 5zm4 1V5a1 1 0 10-1 1h1zm3 0a1 1 0 10-1-1v1h1z" clip-rule="evenodd"></path>
+          <path d="M9 11H3v5a2 2 0 002 2h4v-7zM11 18h4a2 2 0 002-2v-5h-6v7z"></path>
+        </svg>
+        <span class="text-xs">Gift couple</span>
+      </a>
+      
+      <a href="/rsvp.html" class="flex flex-col items-center gap-1 hover:opacity-80 text-white/60 nav-link">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+        </svg>
+        <span class="text-xs">R.S.V.P</span>
+      </a>
+      
+      <a href="/order-of-events.html" class="flex flex-col items-center gap-1 hover:opacity-80 text-white/60 nav-link">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
+          <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"></path>
+        </svg>
+        <span class="text-xs">Program</span>
+      </a>
+    </nav>
+  </footer>
+
+  <script type="module" src="/src/index.js"></script>
+</body>
+</html>
