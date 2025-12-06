@@ -1,3 +1,8 @@
+
+import venue1 from '/img/venue.png';
+import venue2 from '/img/venue2.png';
+import venue3 from '/img/venue3.png';
+
 document.addEventListener('DOMContentLoaded', () => {
 
   function generateInvitationCode(surname) {
@@ -9,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   const venueBackground = document.getElementById('venueBackground');
   if (venueBackground) {
-    const images = ['/img/venue.png', '/img/venue2.png', '/img/venue3.png'];
+    const images = [venue1, venue2, venue3];
     let currentIndex = 0;
 
     const preloadedImages = [];
