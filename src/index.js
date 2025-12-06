@@ -12,14 +12,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const images = ['img/venue.png', 'img/venue2.png', 'img/venue3.png'];
     let currentIndex = 0;
 
-    setInterval(() => {
-      venueBackground.style.opacity = '0.5';
-      setTimeout(() => {
-        currentIndex = (currentIndex + 1) % images.length;
-        venueBackground.style.backgroundImage = `url('${images[currentIndex]}')`;
-        venueBackground.style.opacity = '1';
-      }, 500);
-    }, 2000);
+    const preloadedImages = [];
+    let loadedCount = 0;
+
+    images.forEach((src, index) => {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => {
+        loadedCount++;
+        if (loadedCount === images.length) {
+          startRotation();
+        }
+      };
+      img.onerror = () => {
+        console.error(`Failed to load image: ${src}`);
+        loadedCount++;
+        if (loadedCount === images.length) {
+          startRotation();
+        }
+      };
+      preloadedImages.push(img);
+    });
+
+    function startRotation() {
+      setInterval(() => {
+        venueBackground.style.opacity = '0.5';
+        setTimeout(() => {
+          currentIndex = (currentIndex + 1) % images.length;
+          venueBackground.style.backgroundImage = `url('${images[currentIndex]}')`;
+          venueBackground.style.opacity = '1';
+        }, 500);
+      }, 2000);
+    }
   }
 
   const currentPath = window.location.pathname;
