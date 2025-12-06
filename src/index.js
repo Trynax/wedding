@@ -6,6 +6,22 @@ document.addEventListener('DOMContentLoaded', () => {
     return `${prefix}-${randomNum}`;
   }
 
+  
+  const venueBackground = document.getElementById('venueBackground');
+  if (venueBackground) {
+    const images = ['img/venue.png', 'img/venue2.png', 'img/venue3.png'];
+    let currentIndex = 0;
+
+    setInterval(() => {
+      venueBackground.style.opacity = '0.5';
+      setTimeout(() => {
+        currentIndex = (currentIndex + 1) % images.length;
+        venueBackground.style.backgroundImage = `url('${images[currentIndex]}')`;
+        venueBackground.style.opacity = '1';
+      }, 500);
+    }, 2000);
+  }
+
   const currentPath = window.location.pathname;
   const currentHash = window.location.hash;
   const navLinks = document.querySelectorAll('footer .nav-link');
@@ -455,6 +471,31 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.target === cashModal) {
         closeModalFunc();
       }
+    });
+  }
+
+  const amountButtons = document.querySelectorAll('.amount-btn');
+  const amountInput = document.getElementById('amountInput');
+  
+  if (amountButtons.length > 0 && amountInput) {
+    amountButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        amountButtons.forEach(btn => {
+          btn.classList.remove('bg-maroon', 'text-white');
+        });
+        
+        
+        button.classList.add('bg-maroon', 'text-white');
+
+        const amount = button.getAttribute('data-amount');
+        amountInput.value = amount;
+      });
+    });
+    
+    amountInput.addEventListener('input', () => {
+      amountButtons.forEach(btn => {
+        btn.classList.remove('bg-maroon', 'text-white');
+      });
     });
   }
 
