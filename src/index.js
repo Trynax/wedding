@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   const venueBackground = document.getElementById('venueBackground');
   if (venueBackground) {
-    const images = ['img/venue.png', 'img/venue2.png', 'img/venue3.png'];
+    const images = ['/img/venue.png', '/img/venue2.png', '/img/venue3.png'];
     let currentIndex = 0;
 
     const preloadedImages = [];
